@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace LibP2P.Utilities.Extensions
 {
-    public static class SemaphoreExtensions
+    public static class SemaphoreSlimExtensions
     {
         public static void Lock(this SemaphoreSlim semaphore, Action action)
         {

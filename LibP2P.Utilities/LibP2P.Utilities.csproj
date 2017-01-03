@@ -83,7 +83,7 @@
     <Compile Include="Extensions\MultihashExtensions.cs" />
     <Compile Include="Extensions\ProtoBufExtensions.cs" />
     <Compile Include="Extensions\ReaderWriterLockSlimExtensions.cs" />
-    <Compile Include="Extensions\SemaphoreExtensions.cs" />
+    <Compile Include="Extensions\SemaphoreSlimExtensions.cs" />
     <Compile Include="Extensions\StreamExtensions.cs" />
     <Compile Include="Extensions\TupleExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
