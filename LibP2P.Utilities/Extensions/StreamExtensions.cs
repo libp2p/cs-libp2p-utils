@@ -47,6 +47,62 @@ namespace LibP2P.Utilities.Extensions
             }
         }
 
+        public static IReadWriter AsReadWriter(this Stream stream) => new StreamReadWriter(stream);
+
+        private class StreamReadWriter : IReadWriter
+        {
+            private readonly Stream _stream;
+
+            public StreamReadWriter(Stream stream)
+            {
+                _stream = stream;
+            }
+
+            public int Write(byte[] buffer, int offset, int count)
+            {
+                _stream.Write(buffer, offset, count);
+                return count;
+            }
+
+            public Task<int> WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+            {
+                return _stream.WriteAsync(buffer, offset, count, cancellationToken)
+                    .ContinueWith(t => count, TaskContinuationOptions.NotOnFaulted | TaskContinuationOptions.NotOnCanceled);
+            }
+
+            public int Read(byte[] buffer, int offset, int count) => _stream.Read(buffer, offset, count);
+            public Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken) => _stream.ReadAsync(buffer, offset, count, cancellationToken);
+        }
+
+        public static IReadWriteCloser AsReadWriteCloser(this Stream stream) => new StreamReadWriteCloser(stream);
+
+        private class StreamReadWriteCloser : IReadWriteCloser
+        {
+            private readonly Stream _stream;
+
+            public StreamReadWriteCloser(Stream stream)
+            {
+                _stream = stream;
+            }
+
+            public int Write(byte[] buffer, int offset, int count)
+            {
+                _stream.Write(buffer, offset, count);
+                return count;
+            }
+
+            public Task<int> WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+            {
+                return _stream.WriteAsync(buffer, offset, count, cancellationToken)
+                    .ContinueWith(t => count, TaskContinuationOptions.NotOnFaulted | TaskContinuationOptions.NotOnCanceled);
+            }
+
+            public int Read(byte[] buffer, int offset, int count) => _stream.Read(buffer, offset, count);
+            public Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken) => _stream.ReadAsync(buffer, offset, count, cancellationToken);
+
+            public void Close() => _stream.Dispose();
+        }
+
         public static Stream AsSystemStream(this IReader reader) => new WriterStream(reader);
         public static Stream AsSystemStream(this IWriter writer) => new WriterStream(writer);
         public static Stream AsSystemStream(this ISeeker seeker) => new WriterStream(seeker);
