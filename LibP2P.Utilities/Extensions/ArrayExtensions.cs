@@ -33,5 +33,27 @@ namespace LibP2P.Utilities.Extensions
             Array.Copy(src, 0, dst, offset, actual);
             return actual;
         }
+
+        public static int IndexOf<T>(this T[] array, T item)
+        {
+            for (var i = 0; i < array.Length; i++)
+            {
+                if (array[i].Equals(item))
+                    return i;
+            }
+
+            return -1;
+        }
+
+        public static int LastIndexOf<T>(this T[] array, T item)
+        {
+            for (var i = array.Length - 1; i >= 0; i--)
+            {
+                if (array[i].Equals(item))
+                    return i;
+            }
+
+            return -1;
+        }
     }
 }
