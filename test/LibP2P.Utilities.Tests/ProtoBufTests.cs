@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using LibP2P.Utilities.Extensions;
-using NUnit.Framework;
+using Xunit;
 using ProtoBuf;
 
 namespace LibP2P.Utilities.Tests
 {
-    [TestFixture]
     public class ProtoBufTests
     {
-        [Test]
+        [Fact]
         public void Serialize_GivenContract_SerializesAndDeserializes()
         {
             var contract = new TestProtoBufContract
@@ -25,9 +21,9 @@ namespace LibP2P.Utilities.Tests
             var bytes = contract.SerializeToBytes();
             var deserialized = bytes.Deserialize<TestProtoBufContract>();
 
-            Assert.That(deserialized.TestString, Is.EqualTo(contract.TestString));
-            Assert.That(deserialized.TestBytes, Is.EqualTo(contract.TestBytes));
-            Assert.That(deserialized.TestBool, Is.EqualTo(contract.TestBool));
+            Assert.Equal(deserialized.TestString, contract.TestString);
+            Assert.Equal(deserialized.TestBytes, contract.TestBytes);
+            Assert.Equal(deserialized.TestBool, contract.TestBool);
         }
 
         [ProtoContract]
@@ -41,7 +37,7 @@ namespace LibP2P.Utilities.Tests
             public bool TestBool { get; set; }
         }
 
-        [Test]
+        [Fact]
         public void Serialize_GivenNoContract_ThrowsInvalidOperationException()
         {
             var obj = new Version(1, 2, 3, 4);

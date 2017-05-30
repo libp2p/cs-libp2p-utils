@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.6;net461</TargetFrameworks>
+    <RuntimeIdentifiers>win10-x64;osx-x64;ubuntu-x64</RuntimeIdentifiers>
+    <Description>LibP2P Utilities</Description>
+    <Copyright>Copyright © tabrath 2017</Copyright>
+    <AssemblyTitle>LibP2P.Utilities</AssemblyTitle>
+    <VersionPrefix>1.1.0</VersionPrefix>
+    <Authors>tabrath</Authors>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AssemblyName>LibP2P.Utilities</AssemblyName>
+    <PackageId>LibP2P.Utilities</PackageId>
+    <PackageTags>libp2p utils</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/libp2p/website/0f6f8c7/static/img/favicon.png</PackageIconUrl>
+    <PackageLicenseUrl>https://github.com/libp2p/cs-libp2p-utils/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/libp2p/cs-libp2p-utils</RepositoryUrl>
+    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'net461' ">$(PackageTargetFallback);netstandard1.6;portable-net461+win8</PackageTargetFallback>
+    <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.6' ">1.6.1</NetStandardImplicitPackageVersion>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputType>Library</OutputType>
+    <PackageProjectUrl>https://github.com/libp2p/cs-libp2p-utils</PackageProjectUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>$(DefineConstants)</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="BinaryEncoding" Version="1.3.4" />
+    <PackageReference Include="LibP2P.IO" Version="1.1.0" />
+    <PackageReference Include="Multiformats.Address" Version="1.1.1" />
+    <PackageReference Include="Multiformats.Hash" Version="1.2.1" />
+    <PackageReference Include="protobuf-net" Version="2.2.1" />
+  </ItemGroup>
+</Project>
