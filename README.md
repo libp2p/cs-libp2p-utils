@@ -34,7 +34,7 @@
   Returns a slice of an array, from offset and count (or the remaining lengt).
 
 - `T[] Append<T>(this T[] array, params T[] items)`
-  
+
   Returns a new array containing the given array and all the items in sequential order.
 
 - `int Copy<T>(this T[] src, T[] dst, int offset, int? count = null)`
@@ -63,7 +63,7 @@
 #### Multiaddress
 
 - `bool IsIPLoopback(this Multiaddress addr)`
-  
+
   Is the given Multiaddress pointing to a loopback address? Catches both IPv4 and IPv6.
 
 - `bool IsFDCostlyTransport(this Multiaddress addr)`
@@ -110,17 +110,17 @@
 #### SemaphoreSlim
 
 - `void Lock(this SemaphoreSlim sl, Action action)`
-  
+
   Acquire a lock and perform an action.
 
 - `Task LockAsync(this SemaphoreSlim sl, Action action, CancellationToken cancellationToken`
 
   Acquire a lock and perform an action asynchronously.
- 
+
 - `T Lock<T>(this SemaphoreSim sl, Func<T> func)`
 
   Acquire a lock and return a value.
-  
+
 - `Task<T> LockAsync<T>(this SemaphoreSlim sl, Func<T> func, CancellationToken cancellationToken)`
 
   Acquire a lock and return a value asynchronously.
@@ -186,7 +186,7 @@ Captain: [@tabrath](https://github.com/tabrath).
 
 ## Contribute
 
-Contributions welcome. Please check out [the issues](https://github.com/multiformats/cs-multihash/issues).
+Contributions welcome. Please check out [the issues](https://github.com/libp2p/cs-libp2p-utilities/issues).
 
 Check out our [contributing document](https://github.com/multiformats/multiformats/blob/master/contributing.md) for more information on how we work, and about contributing in general. Please be aware that all interactions related to multiformats are subject to the IPFS [Code of Conduct](https://github.com/ipfs/community/blob/master/code-of-conduct.md).
 
@@ -194,4 +194,4 @@ Small note: If editing the README, please conform to the [standard-readme](https
 
 ## License
 
-[MIT](LICENSE) © 2016 Trond Bråthen
+[MIT](LICENSE) ï¿½ 2016 Trond Brï¿½then

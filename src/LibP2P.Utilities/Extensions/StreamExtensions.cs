@@ -176,7 +176,11 @@ namespace LibP2P.Utilities.Extensions
             public override long Length => -1;
             public override long Position { get; set; }
 
+#if NETSTANDARD1_6
+            public new void Dispose() => _closer?.Close();
+#else
             public override void Close() => _closer?.Close();
+#endif
         }
 
         public static int CopyTo(this IReader src, IWriter dst, int bufferSize = 4096)
